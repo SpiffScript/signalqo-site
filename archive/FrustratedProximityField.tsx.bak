@@ -1,0 +1,212 @@
+import { useEffect, useRef, useState } from "react";
+
+type Vec = { x: number; y: number };
+
+function clamp(n: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, n));
+}
+
+function lerp(a: number, b: number, t: number) {
+  return a + (b - a) * t;
+}
+
+export default function FrustratedProximityField() {
+  const hostRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
+
+  const [size, setSize] = useState({ w: 0, h: 0 });
+  const pointerRef = useRef<Vec | null>(null);
+
+  // Positions
+  const leftRef = useRef({ x: 0, vx: 0 });
+  const rightRef = useRef({ x: 0, vx: 0 });
+  const [renderX, setRenderX] = useState({ left: 0, right: 0 });
+
+  // Measure
+  useEffect(() => {
+    const el = hostRef.current;
+    if (!el) return;
+
+    const update = () => {
+      const r = el.getBoundingClientRect();
+      setSize({ w: r.width, h: r.height });
+    };
+
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  // Init near-snap (pieces start close, almost fitting)
+  useEffect(() => {
+    if (!size.w || !size.h) return;
+
+    const center = size.w / 2;
+    const gap = 18; // small “almost-fit” gap
+    leftRef.current = { x: center - gap, vx: 0 };
+    rightRef.current = { x: center + gap, vx: 0 };
+    setRenderX({ left: center - gap, right: center + gap });
+  }, [size.w, size.h]);
+
+  // Pointer handlers (rail logic uses only Y distance)
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = hostRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    pointerRef.current = { x: e.clientX - r.left, y: e.clientY - r.top };
+  };
+
+  const onPointerLeave = () => {
+    pointerRef.current = null;
+  };
+
+  // Animation
+  useEffect(() => {
+    const tick = () => {
+      const w = size.w;
+      const h = size.h;
+      if (!w || !h) {
+        rafRef.current = requestAnimationFrame(tick);
+        return;
+      }
+
+      const railY = h * 0.52;             // invisible rail line
+      const influence = h * 0.9;          // how far away it starts responding
+      const snapZone = 18;                // inside this => hard snap outward
+      const pad = 18;                     // edge padding
+
+      const center = w / 2;
+      const nearGap = 18;                 // “almost-fit” gap
+      const baseLeft = center - nearGap;
+      const baseRight = center + nearGap;
+
+      const edgeLeft = pad;
+      const edgeRight = w - pad;
+
+      const p = pointerRef.current;
+
+      // If no pointer: tiny autopilot tease (delivery insurance)
+      // (Barely noticeable — just prevents “nothing happened” if user never moves mouse)
+      let distToRail = Infinity;
+      if (p) distToRail = Math.abs(p.y - railY);
+
+      // Barely perceptible “alive” pulse when no pointer.
+      // Think: 0.00–0.03 influence, not 0.25.
+      const autopilot = p ? 0 : 0.012 + 0.008 * Math.sin(performance.now() / 1100);
+
+      const proximity = p
+        ? clamp(1 - distToRail / influence, 0, 1)
+        : clamp(autopilot, 0, 0.03);
+
+      const inSnap = p ? distToRail <= snapZone : false;
+
+
+      // Target positions
+      const targetLeft = inSnap ? edgeLeft : lerp(baseLeft, edgeLeft, proximity);
+      const targetRight = inSnap ? edgeRight : lerp(baseRight, edgeRight, proximity);
+
+      // Motion feel:
+      // - “Going fine… going fine… BAM” => snap uses very high stiffness + low damping
+      // - return is quick but not perfectly calm (slight elasticity)
+      const stiffness = inSnap ? 0.58 : 0.18;
+      const damping = inSnap ? 0.72 : 0.84;
+
+      // Spring step (1D) for each piece
+      const step = (obj: { x: number; vx: number }, target: number) => {
+        const ax = (target - obj.x) * stiffness;
+        obj.vx = (obj.vx + ax) * damping;
+        obj.x = obj.x + obj.vx;
+      };
+
+      step(leftRef.current, targetLeft);
+      step(rightRef.current, targetRight);
+
+      // Clamp so nothing goes off-screen
+      leftRef.current.x = clamp(leftRef.current.x, pad, w - pad);
+      rightRef.current.x = clamp(rightRef.current.x, pad, w - pad);
+
+      // Render
+      setRenderX({ left: leftRef.current.x, right: rightRef.current.x });
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [size.w, size.h]);
+
+  return (
+    <div
+      ref={hostRef}
+      className="relative w-full overflow-hidden bg-white"
+      style={{ height: 240 }}
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
+    >
+
+      {/* LEFT piece */}
+      <div
+        className="absolute top-1/2"
+        style={{ left: renderX.left, transform: "translate(-50%, -50%)" }}
+        aria-hidden="true"
+      >
+        <TetrisPiece kind="S" />
+      </div>
+
+      {/* RIGHT piece */}
+      <div
+        className="absolute top-1/2"
+        style={{ left: renderX.right, transform: "translate(-50%, -50%)" }}
+        aria-hidden="true"
+      >
+        <TetrisPiece kind="S" />
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Modern, uncolored tetromino look:
+ * - made of small squares
+ * - outline only (no “toy” vibe)
+ */
+function TetrisPiece({ kind }: { kind: "S" | "S" }) {
+  // 4-block tetromino layout in a 4x2 grid (24px units)
+  const blocks: Array<[number, number]> =
+    kind === "S"
+      ? [
+          [1, 0],
+          [2, 0],
+          [0, 1],
+          [1, 1],
+        ]
+      : [
+          [0, 0],
+          [1, 0],
+          [1, 1],
+          [2, 1],
+        ];
+
+  return (
+    <div className="relative" style={{ width: 96, height: 48 }}>
+      {blocks.map(([cx, cy], i) => (
+        <div
+          key={i}
+          className="absolute bg-white"
+          style={{
+            left: cx * 24,
+            top: cy * 24,
+            width: 22,
+            height: 22,
+            border: "1px solid rgb(203 213 225)",
+            boxShadow: "0 1px 0 rgba(15,23,42,0.05)",
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+

@@ -1,13 +1,54 @@
 <!doctype html>
 <html lang="en">
   <head>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC8H483QNF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-HC8H483QNF');
+    </script>
+
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>signalqo-site</title>
+    <title>SignalQo</title>
+    <meta
+      name="description"
+      content="SignalQo helps operators and teams turn turbulence into structure — with leadership clarity, operational audits, and execution systems."
+    />
+
+    <meta property="og:title" content="SignalQo" />
+    <meta
+      property="og:description"
+      content="Operational clarity for growing teams — leadership, audits, and execution systems."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.signalqo.com/" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SignalQo" />
+    <meta
+      name="twitter:description"
+      content="Operational clarity for growing teams — leadership, audits, and execution systems."
+    />
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://www.signalqo.com/#organization",
+          "name": "SignalQo",
+          "url": "https://www.signalqo.com",
+          "email": "contact@signalqo.com",
+          "description": "SignalQo helps operators turn turbulence into structure through leadership clarity, operational audits, and execution systems that hold under pressure."
+        }
+      </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>

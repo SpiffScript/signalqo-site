@@ -1,0 +1,128 @@
+import React, { useEffect, useMemo, useRef, useState } from "react";
+
+function clamp01(n: number) {
+  return Math.max(0, Math.min(1, n));
+}
+
+function mapRange(x: number, inMin: number, inMax: number) {
+  return clamp01((x - inMin) / (inMax - inMin));
+}
+
+function clamp(n: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, n));
+}
+
+type Props = {
+  /** 0..1 within the pinned section */
+  progress: number;
+};
+
+export default function SignalBorderPath({ progress }: Props) {
+  const leftRef = useRef<SVGPathElement | null>(null);
+  const rightRef = useRef<SVGPathElement | null>(null);
+
+  const [leftLen, setLeftLen] = useState(1);
+  const [rightLen, setRightLen] = useState(1);
+
+  // --- spacing only: track viewport width to place rails safely ---
+  const [vw, setVw] = useState<number>(() =>
+    typeof window === "undefined" ? 1200 : window.innerWidth
+  );
+
+  useEffect(() => {
+    const onResize = () => setVw(window.innerWidth);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  // --------------------------------------------------------------
+
+  useEffect(() => {
+    if (leftRef.current) setLeftLen(leftRef.current.getTotalLength());
+    if (rightRef.current) setRightLen(rightRef.current.getTotalLength());
+  }, []);
+
+  // timing (UNCHANGED)
+  const raw = useMemo(() => mapRange(progress, 0.4, 1.0), [progress]);
+  const drawT = useMemo(() => {
+    const t = raw;
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }, [raw]);
+  const opacity = useMemo(() => 0.06 + drawT * 0.3, [drawT]);
+
+  const leftOffset = leftLen * (1 - drawT);
+  const rightOffset = rightLen * (1 - drawT);
+
+  // --- spacing only: rails track the content container and never cross cards ---
+  // Your cards are inside a max-w-6xl container (≈ 1152px) with padding.
+  // We place rails just OUTSIDE that container, then clamp for tiny windows.
+  const { leftX, rightX } = useMemo(() => {
+    const containerMaxPx = 1152; // max-w-6xl
+    const railInsetPx = 96; // bigger = rails sit farther OUT (closer to header icon edges on ultrawide)
+
+    const minFromViewportEdgePx = 14; // keep off the absolute edge
+    const minFromCenterPx = 130; // prevents rails intruding into card area on narrow screens
+
+    const containerW = Math.min(vw, containerMaxPx);
+    const containerLeft = (vw - containerW) / 2;
+    const containerRight = containerLeft + containerW;
+
+    let leftPx = containerLeft - railInsetPx;
+    let rightPx = containerRight + railInsetPx;
+
+    // clamp inside viewport
+    leftPx = Math.max(minFromViewportEdgePx, leftPx);
+    rightPx = Math.min(vw - minFromViewportEdgePx, rightPx);
+
+    // clamp away from center (prevents crossing cards when window is narrow)
+    const centerPx = vw / 2;
+    leftPx = Math.min(leftPx, centerPx - minFromCenterPx);
+    rightPx = Math.max(rightPx, centerPx + minFromCenterPx);
+
+    // convert px -> viewBox percent (0..100)
+    const leftPct = (leftPx / vw) * 100;
+    const rightPct = (rightPx / vw) * 100;
+
+    return {
+      leftX: clamp(leftPct, 0, 50),
+      rightX: clamp(rightPct, 50, 100),
+    };
+  }, [vw]);
+  // ---------------------------------------------------------------------------
+
+  return (
+    <div className="pointer-events-none absolute inset-0 z-[6] overflow-hidden">
+      <svg
+        className="h-full w-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        {/* LEFT: down, turn, converge, then down */}
+        <path
+          ref={leftRef}
+          d={`M ${leftX} 0 V 94 H 50 V 100`}
+          fill="none"
+          stroke={`rgba(255,255,255,${opacity})`}
+          strokeWidth="0.22"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeDasharray={leftLen}
+          strokeDashoffset={leftOffset}
+        />
+
+        {/* RIGHT: down, turn, converge, then down */}
+        <path
+          ref={rightRef}
+          d={`M ${rightX} 0 V 94 H 50 V 100`}
+          fill="none"
+          stroke={`rgba(255,255,255,${opacity})`}
+          strokeWidth="0.22"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeDasharray={rightLen}
+          strokeDashoffset={rightOffset}
+        />
+      </svg>
+    </div>
+  );
+}

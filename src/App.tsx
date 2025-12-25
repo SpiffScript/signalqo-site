@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+
+// Fixed: Pointing to types.ts where we just cleaned up the routes
+import { RoutePath } from "./types";
+
+import Header from './components/Header';
+import Footer from './components/Footer';
+import BackToTop from './components/ui/BackToTop';
+
+import LandingPage from './components/LandingPage';
+import Services from './components/Services';
+import Leadership from './components/Leadership'; // Renamed for filename consistency
+import Solutions from './components/Solutions';
+import NextSteps from './components/NextSteps';
+import About from './components/About';
+import Contact from './components/Contact';
+
+import Terms from './components/legal/Terms';
+import Privacy from './components/legal/Privacy';
+import AcceptableUse from './components/legal/AcceptableUse';
+
+import Seo from "./components/Seo";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { pathname } = useLocation();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
+      <Seo />
+      <Header />
+
+      {/* Main content area - pt-16 accounts for fixed header height */}
+      <main className="flex-grow pt-16">
+        <Routes>
+          <Route path={RoutePath.HOME} element={<LandingPage />} />
+          <Route path={RoutePath.SERVICES} element={<Services />} />
+          <Route path={RoutePath.LEADERSHIPQO} element={<Leadership />} />
+          <Route path={RoutePath.SOLUTIONS} element={<Solutions />} />
+          <Route path={RoutePath.NEXT_STEPS} element={<NextSteps />} />
+          <Route path={RoutePath.ABOUT} element={<About />} />
+          <Route path={RoutePath.CONTACT} element={<Contact />} />
+
+          {/* Legal Routes */}
+          <Route path={RoutePath.TERMS} element={<Terms />} />
+          <Route path={RoutePath.PRIVACY} element={<Privacy />} />
+          <Route path={RoutePath.ACCEPTABLE_USE} element={<AcceptableUse />} />
+
+          {/* Fallback - Redirects unknown paths to Home */}
+          <Route path="*" element={<LandingPage />} />
+        </Routes>
+      </main>
+
+      <Footer />
+      <BackToTop />
+    </div>
+  );
 }
 
-export default App
+export default App;

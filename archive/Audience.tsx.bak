@@ -1,0 +1,61 @@
+import { CheckCircle2, XCircle } from 'lucide-react';
+
+export default function Audience() {
+  return (
+    <section className="py-20 bg-slate-100 border-y border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* FOR */}
+          <div className="space-y-6">
+            <div className="flex items-center space-x-3 mb-6">
+              <CheckCircle2 className="w-6 h-6 text-emerald-600" />
+              <h3 className="text-2xl font-bold text-slate-900">Who This Is For</h3>
+            </div>
+
+            <ul className="space-y-4">
+              {[
+                'Owners/Operators handling their own P&L.',
+                'Leaders facing a decision worth more than $50k.',
+                'Teams who want direct, unvarnished feedback.',
+                'Businesses stuck in a plateau.',
+              ].map((item, i) => (
+                <li
+                  key={i}
+                  className="flex items-start bg-white p-4 border border-slate-200 shadow-sm rounded-sm"
+                >
+                  <span className="text-emerald-600 font-bold mr-3">✓</span>
+                  <span className="text-slate-800 text-sm font-medium">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* NOT FOR */}
+          <div className="space-y-6">
+            <div className="flex items-center space-x-3 mb-6">
+              <XCircle className="w-6 h-6 text-red-500" />
+              <h3 className="text-2xl font-bold text-slate-900">Who This Is Not For</h3>
+            </div>
+
+            <ul className="space-y-4">
+              {[
+                "People seeking 'motivational coaching'.",
+                'Anyone looking for a scapegoat.',
+                'Those who want 100-page slide decks.',
+                'Startups with no revenue/operations.',
+              ].map((item, i) => (
+                <li
+                  key={i}
+                  className="flex items-start bg-white p-4 border border-slate-200 shadow-sm rounded-sm opacity-75"
+                >
+                  <span className="text-red-500 font-bold mr-3">✕</span>
+                  <span className="text-slate-600 text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

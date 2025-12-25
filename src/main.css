@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* ------------------------
+   Signal line animation
+------------------------- */
+
+@keyframes signal-flow {
+  0% {
+    top: -20%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.animate-signal-flow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: signal-flow 1.2s ease-in-out forwards;
+}
+
+/* ------------------------
+   3D / flip helpers
+------------------------- */
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-x-180 {
+  transform: rotateX(180deg);
+}
+
+/* Smooth transition on grouped hovers (optional) */
+.group {
+  transition: all 0.3s ease;
+}
+
+/* ------------------------
+   Signal glow effects
+------------------------- */
+
+.animate-signal-drop {
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+}
+
+@keyframes signal-fade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-signal-flow-delay {
+  opacity: 0;
+  animation: signal-fade 1.6s ease-in-out forwards;
+  animation-delay: 0.4s;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.6));
+}
+
+/* Extra safety for 3D helpers on arbitrary elements */
+[transform-style="preserve-3d"] {
+  transform-style: preserve-3d;
+}
+
+[backface-visibility="hidden"] {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ------------------------
+   SignalQo flow map
+   subtle blueprint background
+------------------------- */
+
+.signalqo-flow-bg {
+  position: relative;
+}
+
+.signalqo-flow-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+    linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.06;
+  pointer-events: none;
+}

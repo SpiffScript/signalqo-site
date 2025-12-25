@@ -1,0 +1,35 @@
+export default function FrustratedProximityCopy() {
+  return (
+    <div className="max-w-3xl">
+      <h2 className="text-3xl font-semibold text-slate-900">
+        When effort doesn’t turn into traction
+      </h2>
+
+      <p className="mt-6 text-base leading-relaxed text-slate-600">
+        You’re making decisions. You’re putting systems in place. Things improve — briefly.
+        But nothing settles.
+        <br />
+        <br />
+        You’re close enough to feel momentum, yet far enough that it never quite clicks.
+      </p>
+
+      <p className="mt-8 text-sm text-slate-600">
+        This is what it feels like when effort and outcome aren’t aligned.
+      </p>
+
+      <div className="mt-10 inline-flex items-center gap-4 border border-slate-200 bg-white px-5 py-3 shadow-sm">
+        <div>
+          <div className="text-sm font-semibold text-slate-900">Book a Decision Review</div>
+          <div className="mt-0.5 text-sm text-slate-600">Quick. Focused. No fluff.</div>
+        </div>
+
+        <button
+          type="button"
+          className="ml-3 border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+        >
+          Book Review
+        </button>
+      </div>
+    </div>
+  );
+}

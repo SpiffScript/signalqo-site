@@ -1,0 +1,115 @@
+import React, { useMemo } from "react";
+
+function clamp01(n: number) {
+  return Math.max(0, Math.min(1, n));
+}
+
+type Props = {
+  /** 0..1 within the pinned section */
+  progress: number;
+
+  /** px inset from panel edges */
+  inset?: number;
+
+  /** where the "turn" sits from bottom (px) */
+  turnFromBottom?: number;
+};
+
+export default function SignalRails({
+  progress,
+  inset = 28,
+  turnFromBottom = 96,
+}: Props) {
+  // Convergence window
+  const convergeStart = 0.82;
+  const convergeEnd = 0.98;
+
+  const t = useMemo(
+    () => clamp01((progress - convergeStart) / (convergeEnd - convergeStart)),
+    [progress]
+  );
+
+  // Subtle opacity increase as it converges
+  const alpha = useMemo(() => 0.22 + t * 0.26, [t]); // 0.22 -> 0.48
+
+  // Horizontal travel: from edges to center
+  // We'll compute as percentage, but clamp it so it doesn't overshoot.
+  const leftX = useMemo(() => `calc(${inset}px + ${t * 50}%)`, [t, inset]);
+  const rightX = useMemo(() => `calc(${inset}px + ${t * 50}%)`, [t, inset]);
+
+  // For the vertical rails, we stop them at the "turn" height
+  const railBottom = turnFromBottom;
+
+  // Corner visibility comes in late (so it feels intentional)
+  const cornerIn = useMemo(() => clamp01((progress - 0.88) / 0.08), [progress]);
+
+  return (
+    <div className="pointer-events-none absolute inset-0 z-[5]">
+      {/* LEFT: vertical segment (stops above the corner) */}
+      <div
+        className="absolute top-0"
+        style={{
+          left: leftX,
+          bottom: railBottom,
+          width: 1,
+          background: `rgba(255,255,255,${alpha})`,
+          transition: "left 120ms linear, background 120ms linear",
+        }}
+      />
+
+      {/* RIGHT: vertical segment */}
+      <div
+        className="absolute top-0"
+        style={{
+          right: rightX,
+          bottom: railBottom,
+          width: 1,
+          background: `rgba(255,255,255,${alpha})`,
+          transition: "right 120ms linear, background 120ms linear",
+        }}
+      />
+
+      {/* LEFT: horizontal turn-in line (90°) */}
+      <div
+        className="absolute"
+        style={{
+          left: leftX,
+          bottom: railBottom,
+          height: 1,
+          width: `calc(50% - ${inset}px)`,
+          background: `rgba(255,255,255,${alpha})`,
+          opacity: cornerIn,
+          transition: "left 120ms linear, opacity 160ms ease, background 120ms linear",
+        }}
+      />
+
+      {/* RIGHT: horizontal turn-in line (90°) */}
+      <div
+        className="absolute"
+        style={{
+          right: rightX,
+          bottom: railBottom,
+          height: 1,
+          width: `calc(50% - ${inset}px)`,
+          background: `rgba(255,255,255,${alpha})`,
+          opacity: cornerIn,
+          transition: "right 120ms linear, opacity 160ms ease, background 120ms linear",
+        }}
+      />
+
+      {/* CENTER: vertical line continues down (only when converged) */}
+      <div
+        className="absolute left-1/2"
+        style={{
+          top: 0,
+          bottom: 0,
+          width: 1,
+          transform: "translateX(-50%)",
+          background: `rgba(255,255,255,${alpha})`,
+          opacity: t,
+          transition: "opacity 160ms ease, background 120ms linear",
+        }}
+      />
+    </div>
+  );
+}

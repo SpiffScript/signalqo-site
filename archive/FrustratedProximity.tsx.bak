@@ -1,0 +1,17 @@
+import FrustratedProximityCopy from "./FrustratedProximityCopy";
+import FrustratedProximityField from "./FrustratedProximityField";
+
+export default function FrustratedProximity() {
+  return (
+    <section className="w-full bg-white py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <FrustratedProximityCopy />
+      </div>
+
+      {/* Full-width rail field (spans viewport) */}
+      <div className="mt-12">
+        <FrustratedProximityField />
+      </div>
+    </section>
+  );
+}
