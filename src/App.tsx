@@ -15,6 +15,7 @@ import Solutions from './components/Solutions';
 import NextSteps from './components/NextSteps';
 import About from './components/About';
 import Contact from './components/Contact';
+import NotFound from './NotFound';
 
 import Terms from './components/legal/Terms';
 import Privacy from './components/legal/Privacy';
@@ -52,7 +53,7 @@ function App() {
           <Route path={RoutePath.ACCEPTABLE_USE} element={<AcceptableUse />} />
 
           {/* Fallback - Redirects unknown paths to Home */}
-          <Route path="*" element={<LandingPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 

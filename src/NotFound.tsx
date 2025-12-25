@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { RoutePath } from "../types";
+import { RoutePath } from "./types";
 
 export default function NotFound() {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ export default function NotFound() {
 
         <p className="mt-6 text-base leading-7 text-slate-400 max-w-lg mx-auto">
           Whatever you were looking for isn't here. It’s either been decommissioned,
-          renamed, or it never existed in the first place—much like your competitor's
+          renamed, or it never existed in the first place – much like your competitor's
           "proprietary growth framework."
         </p>
 
