@@ -25,7 +25,7 @@ export default function Footer() {
               <span className="text-2xl font-bold text-slate-200">SignalQo</span>
             </div>
             <p className="text-sm leading-relaxed text-slate-300 max-w-md">
-              Clarity that makes progress possible.
+              Clarity That Makes Progress Possible.
             </p>
           </div>
 
@@ -60,11 +60,14 @@ export default function Footer() {
             <span className="hidden sm:inline text-slate-700">•</span>
             <a href={`mailto:${email}`} className="text-slate-300 hover:text-white transition-colors">{email}</a>
           </div>
+            <div className="mt-2 text-sm text-slate-400">
+              Based in Denver, Colorado. Supporting organizations beyond geography.
+              </div>
 
           <div className="mt-2 flex flex-wrap justify-center items-center text-sm text-slate-400">
             <NavLink to={RoutePath.PRIVACY} className="hover:text-white transition-colors">Privacy</NavLink>
             <span className="mx-3 text-slate-600">•</span>
-            <NavLink to={RoutePath.TERMS} className="hover:text-white transition-colors">Terms</NavLink>
+            <NavLink to={RoutePath.TERMS} className="hover:text-white transition-colors">Terms of Service</NavLink>
             <span className="mx-3 text-slate-600">•</span>
             <NavLink to={RoutePath.ACCEPTABLE_USE} className="hover:text-white transition-colors">Acceptable Use</NavLink>
           </div>
