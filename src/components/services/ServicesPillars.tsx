@@ -52,7 +52,7 @@ const PILLARS: Pillar[] = [
     ],
     work: [
       "Align priorities, expectations, and operating targets",
-      "Tighten accountability systems (without drama)",
+      "Close the loop with low-friction accountability",
       "Reduce cross-team friction and miscommunication",
       "Clarify handoffs so work doesn’t fall between teams",
     ],

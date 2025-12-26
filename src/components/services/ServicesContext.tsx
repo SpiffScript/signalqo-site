@@ -10,7 +10,7 @@ export default function ServicesContext() {
 
             <p className="mt-4 text-base leading-relaxed text-white/70">
               When organizations struggle, it rarely looks like failure. It looks like longer days. More meetings.
-              More involvement at the top. Capable people working hard — but progress feeling heavier than it should.
+              More involvement at the top. Capable people working hard – but progress feeling heavier than it should.
             </p>
 
             <p className="mt-4 text-base leading-relaxed text-white/70">
@@ -19,7 +19,7 @@ export default function ServicesContext() {
             </p>
 
             <p className="mt-4 text-base leading-relaxed text-white/70">
-              SignalQo exists to help organizations step back, reduce noise, and restore clarity — so momentum doesn’t
+              SignalQo exists to help organizations step back, reduce noise, and restore clarity – so momentum doesn’t
               depend on constant intervention.
             </p>
           </div>
