@@ -8,7 +8,6 @@ import {
 import SignalDomainsCta from "./SignalDomainsCta";
 
 type Props = {
-  /** Preferred: set false once the parent renders a shared spine line */
   renderSpine?: boolean;
   spineExtendUpPx?: number;
 };
@@ -49,7 +48,7 @@ export default function SignalDomainsMap({
   return (
     <section className="w-full">
       <div className="relative w-full bg-gradient-to-b from-slate-50 to-white">
-        {/* TEMP component spine; prefer parent spine for true continuation */}
+        {/* TEMP component spine; Delete me later */}
         {renderSpine && (
           <div
             aria-hidden="true"
@@ -59,7 +58,6 @@ export default function SignalDomainsMap({
         )}
 
         <div className="mx-auto max-w-7xl px-6 md:px-8 py-16 md:py-20">
-          {/* Header (unchanged) */}
           <div className="text-center mb-12">
             <div className="text-[11px] tracking-[0.3em] uppercase text-slate-500">
               Full Flow Map
@@ -74,7 +72,6 @@ export default function SignalDomainsMap({
             </p>
           </div>
 
-          {/* Rows */}
           <div className="relative mx-auto max-w-6xl">
             <div className="space-y-10 md:space-y-12">
               {rows.map((row, idx) => {
@@ -86,7 +83,7 @@ export default function SignalDomainsMap({
 
                 return (
                   <div key={idx} className="relative">
-                    {/* Center node with per-side chevrons */}
+
                     <div
                       aria-hidden="true"
                       className="pointer-events-none absolute left-1/2 -translate-x-1/2"
@@ -95,21 +92,17 @@ export default function SignalDomainsMap({
                       <div className="relative flex items-center justify-center">
                         <div className="h-2.5 w-2.5 rounded-full bg-white border border-slate-300" />
 
-                        {/* Left indicator */}
                         <span className="absolute -left-5 text-[11px] font-semibold text-slate-500">
                           {leftOpen ? "v" : "<"}
                         </span>
 
-                        {/* Right indicator */}
                         <span className="absolute -right-5 text-[11px] font-semibold text-slate-500">
                           {rightOpen ? "v" : ">"}
                         </span>
                       </div>
                     </div>
 
-                    {/* Aligned headers in a single row */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
-                      {/* LEFT */}
                       <div>
                         {left && (
                           <>
@@ -132,7 +125,6 @@ export default function SignalDomainsMap({
                               </div>
                             </button>
 
-                            {/* Panel */}
                             <div
                               className={[
                                 "overflow-hidden transition-[max-height,opacity] duration-200 ease-out",
@@ -164,7 +156,6 @@ export default function SignalDomainsMap({
                                   </div>
                                 </div>
 
-                                {/* Exit line: hover/focus-only */}
                                 {left.nextLink && (
                                   <div className="mt-6 flex justify-end">
                                     <button
@@ -192,7 +183,6 @@ export default function SignalDomainsMap({
                         )}
                       </div>
 
-                      {/* RIGHT */}
                       <div>
                         {right && (
                           <>
@@ -215,7 +205,6 @@ export default function SignalDomainsMap({
                               </div>
                             </button>
 
-                            {/* Panel */}
                             <div
                               className={[
                                 "overflow-hidden transition-[max-height,opacity] duration-200 ease-out",
@@ -247,7 +236,6 @@ export default function SignalDomainsMap({
                                   </div>
                                 </div>
 
-                                {/* Exit line: hover/focus-only */}
                                 {right.nextLink && (
                                   <div className="mt-6 flex justify-end">
                                     <button

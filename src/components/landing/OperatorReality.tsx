@@ -1,6 +1,5 @@
-// src/components/landing/OperatorReality.tsx
 import { useNavigate } from "react-router-dom";
-import { RoutePath } from "../../types"; // Consistency fix
+import { RoutePath } from "../../types";
 import OperatorPain from "./OperatorPain";
 import OperatorTruths from "./OperatorTruths";
 
@@ -10,7 +9,7 @@ export default function OperatorReality() {
   return (
     <section className="bg-slate-100 w-full">
       <div className="relative mx-auto w-full max-w-7xl px-6 pt-8 pb-12">
-        {/* Preserved spine line - Note: Check visual alignment with grid columns */}
+
         <div
           className="pointer-events-none absolute inset-y-0 left-1/2 w-px bg-slate-300/50 z-0"
           aria-hidden="true"
@@ -25,13 +24,10 @@ export default function OperatorReality() {
           </p>
         </div>
 
-        {/* Two-column layout */}
         <div className="grid gap-8 lg:grid-cols-12 items-start max-w-full overflow-hidden">
-          {/* Left column */}
           <div className="lg:col-span-8 space-y-6 min-w-0 overflow-hidden">
             <OperatorPain />
 
-            {/* CTA panel */}
             <div className="relative z-10 rounded-none border border-slate-300/50 bg-slate-50 p-6 shadow-sm">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
@@ -56,7 +52,6 @@ export default function OperatorReality() {
             </div>
           </div>
 
-          {/* Right column */}
           <div className="lg:col-span-4">
             <OperatorTruths />
           </div>

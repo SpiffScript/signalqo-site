@@ -2,7 +2,7 @@
 export default {
   content: [
     './index.html',
-    './src/**/*.tsx', // Only target TSX files, using ** for deep search
+    './src/**/*.tsx',
   ],
   theme: {
     extend: {},

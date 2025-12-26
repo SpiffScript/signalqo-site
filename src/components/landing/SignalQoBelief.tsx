@@ -18,7 +18,6 @@ export default function SignalQoBelief() {
           everything that was out of reach becomes possible again.
         </p>
 
-        {/* subtle accent (desktop-first) */}
         <div aria-hidden="true" className="mx-auto mt-10 hidden md:block h-px w-16 bg-slate-800/60" />
       </div>
     </section>

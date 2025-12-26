@@ -149,7 +149,7 @@ export default function OperatorPain() {
         />
 
         <div className="relative z-10 w-full max-w-full overflow-hidden rounded-none">
-          {/* Wrapper to contain the horizontal leak */}
+
           <div className="overflow-hidden">
             <div
               ref={scrollerRef}
@@ -164,7 +164,7 @@ export default function OperatorPain() {
                 <article
                   key={c.key}
                   data-card
-                  /* flex-none is critical to prevent the cards from stretching the page */
+
                   className={[
                     "snap-start",
                     "w-full flex-none shrink-0 max-w-full lg:w-[calc((100%-24px)/2)]",

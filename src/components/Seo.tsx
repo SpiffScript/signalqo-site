@@ -10,10 +10,8 @@ export default function Seo() {
 
     if (!seo) return;
 
-    // Title
     document.title = seo.title;
 
-    // Meta description
     let meta = document.querySelector<HTMLMetaElement>(
       'meta[name="description"]'
     );
@@ -26,7 +24,6 @@ export default function Seo() {
 
     meta.content = seo.description;
 
-    // Canonical
     let canonical = document.querySelector<HTMLLinkElement>(
       'link[rel="canonical"]'
     );

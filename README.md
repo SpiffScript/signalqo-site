@@ -1,73 +1,85 @@
-# React + TypeScript + Vite
+# SignalQo Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the source code for **signalqo.com**, the public-facing site for SignalQo.
 
-Currently, two official plugins are available:
+SignalQo exists to help leaders, managers, and operators restore clarity, strengthen execution, and build business systems that hold under pressure. As part of its branding and marketplace positioning, the site is intentionally direct – designed to filter for fit, not maximize volume.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Framework: Vite + React (TypeScript)
+- Styling: Tailwind CSS
+- Hosting: Cloudflare Pages
+- DNS / Edge: Cloudflare
+- Analytics: Google Analytics (gtag)
+- Schema: JSON-LD (Organization)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project Structure (High Level)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- `index.html`
+  Core document head (meta tags, analytics, schema).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- `src/`
+  Application source.
+  - `components/` – Reusable UI and section components
+  - `pages/` – Page-level assemblies (Home, Services, Next Steps, etc.)
+  - `styles/` – Global styles and Tailwind configuration
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- `public/`
+  Static assets.
+
+---
+
+## Local Development
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Runs the site locally using Vite’s development server.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Deployment
+
+Deployment is handled automatically via **Cloudflare Pages**.
+
+- Commits to the configured branch trigger builds.
+- DNS is managed in Cloudflare.
+- The apex domain uses Cloudflare’s proxied A-record setup for Pages.
+
+No manual deployment steps are required.
+
+---
+
+## Notes on Intent
+
+This site is not designed as a traditional consulting or agency site.
+
+- Language is intentionally precise and non-promotional.
+- The goal is clarity and self-selection, not persuasion at all costs.
+- SEO is treated as a discovery mechanism, not an identity.
+
+If something feels overly generic, it is likely incorrect.
+
+---
+
+## Status
+
+- Initial public launch: December 2025
+- Actively iterating copy, structure, and supporting content.
+- No backwards-compatibility guarantees at this stage.
+
+---
+
+## Contact
+
+support@signalqo.com
+
+---
+
+Built deliberately. Maintained pragmatically.

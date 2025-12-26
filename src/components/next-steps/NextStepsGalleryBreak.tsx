@@ -9,10 +9,8 @@ export default function NextStepsGallery() {
             className="w-full h-[420px] sm:h-[520px] md:h-[600px] object-cover object-center"
           />
 
-          {/* Soft fade into the hero above */}
           <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/80 via-black/0" />
 
-          {/* Soft fade into the roadmap below */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 via-black/0" />
         </div>
       </div>

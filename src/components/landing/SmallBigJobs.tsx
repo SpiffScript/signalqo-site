@@ -1,4 +1,3 @@
-// SmallBigJobs.tsx Refined
 import { useEffect, useMemo, useState } from "react";
 
 type Props = {
@@ -41,14 +40,12 @@ export default function SmallBigJobs({ words, intervalMs = 4200 }: Props) {
 
   return (
     <section className="relative w-full bg-slate-100 overflow-hidden">
-      {/* Design Spine */}
       <div className="pointer-events-none absolute inset-0 z-0 flex justify-center" aria-hidden="true">
         <div className="h-full w-px bg-slate-300/50" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-8 py-20">
         <div className="max-w-4xl text-left">
-          {/* Sizing Fix: Dropped from 4xl/6xl to 3xl/5xl */}
           <div className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl lg:text-5xl space-y-2">
             <div className="leading-tight text-slate-800/60">You didn’t just open a business.</div>
 
@@ -66,7 +63,6 @@ export default function SmallBigJobs({ words, intervalMs = 4200 }: Props) {
             </div>
           </div>
 
-          {/* Sizing Fix: text-base for a cleaner secondary note */}
           <p className="mt-8 max-w-2xl text-base text-left leading-relaxed text-slate-600">
             The work and demands expand faster than the plan.
             <span className="block mt-2 font-medium text-slate-900">

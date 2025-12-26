@@ -39,7 +39,6 @@ function LaneCard({ lane }: { lane: Lane }) {
         </p>
       </div>
 
-      {/* Lanes Grid */}
       <div className="mt-10 grid gap-12 md:grid-cols-2 relative">
         <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white/5" />
 
@@ -82,7 +81,6 @@ function LaneCard({ lane }: { lane: Lane }) {
         </div>
       </div>
 
-      {/* Outcome */}
       <div className="mt-10 border-t border-white/5 pt-6">
         <div className="flex items-start gap-3">
           <span className="text-[10px] font-bold tracking-widest text-white/30 uppercase mt-1">

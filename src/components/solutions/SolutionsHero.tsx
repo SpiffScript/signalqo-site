@@ -1,6 +1,6 @@
-import { ArrowUpRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { RoutePath } from "../../types";
+import { useNavigate } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 import { CtaButton } from "../ui/CtaButton";
 
 export default function SolutionsHero() {

@@ -9,7 +9,7 @@ type ContactPayload = {
   message: string;
   preferredContact: "email" | "phone";
   topic: "general" | "services" | "partnership" | "speaking" | "other";
-  website?: string; // honeypot
+  website?: string;
 };
 
 type SubmitState = "idle" | "submitting" | "success" | "error";
@@ -36,7 +36,6 @@ export default function Contact() {
     Partial<Record<keyof ContactPayload, string>>
   >({});
 
-  // Turnstile
   const [turnstileToken, setTurnstileToken] = useState<string>("");
   const [turnstileMsg, setTurnstileMsg] = useState<string>("");
 
@@ -49,12 +48,9 @@ export default function Contact() {
     const hasEmail = form.email.trim() && isValidEmail(form.email);
     const hasPhone = (form.phone || "").trim().replace(/\D/g, "").length >= 10;
 
-    // Must have at least one valid contact method
     if (!hasEmail && !hasPhone) return false;
 
-    // If phone is preferred, phone must be present
     if (form.preferredContact === "phone" && !hasPhone) return false;
-    // If email is preferred, email must be present
     if (form.preferredContact === "email" && !hasEmail) return false;
 
     return true;
@@ -97,7 +93,6 @@ export default function Contact() {
     e.preventDefault();
     if (!validate()) return;
 
-    // honeypot
     if ((form.website || "").trim().length > 0) {
       setSubmitState("success");
       return;
@@ -149,12 +144,11 @@ export default function Contact() {
           <h1 className="text-4xl font-bold tracking-tight">Contact</h1>
           <div className="mt-4 h-1 w-18 bg-blue-400/85" />
           <p className="mt-6 text-lg leading-relaxed text-white/50">
-            Tell us what’s breaking down. We’ll respond with clarity and next steps — not generic advice.
+            Tell us what’s breaking down. We’ll respond with clarity and next steps – not generic advice.
           </p>
         </div>
 
         <div className="mt-14 grid gap-8 md:grid-cols-2">
-          {/* LEFT: info panel (matches your lane style) */}
           <div className="group border border-white/5 bg-slate-900 p-8 transition-all duration-300 hover:border-blue-500/30 hover:bg-slate-900/80">
             <h2 className="text-2xl font-semibold tracking-tight text-white group-hover:text-blue-400 transition-colors">
               What to include
@@ -227,7 +221,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* RIGHT: form card */}
           <div className="border border-white/5 bg-slate-900 p-8">
             {submitState === "success" ? (
               <div className="py-8">
@@ -276,7 +269,6 @@ export default function Contact() {
                   </p>
                 </div>
 
-                {/* honeypot */}
                 <div className="hidden">
                   <label className="text-sm font-medium">Website</label>
                   <input
@@ -387,7 +379,6 @@ export default function Contact() {
                   ) : null}
                 </div>
 
-                {/* Turnstile */}
                 <div className="pt-2">
                   {turnstileMsg ? (
                     <div className="mb-2 text-xs text-white/50">{turnstileMsg}</div>

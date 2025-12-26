@@ -1,13 +1,12 @@
-import { CtaButton } from "../ui/CtaButton";
 import { useNavigate } from "react-router-dom";
 import { RoutePath } from "../../types";
+import { CtaButton } from "../ui/CtaButton";
 
 export default function ServicesHero() {
   const navigate = useNavigate();
 
   return (
     <section className="relative bg-black">
-      {/* Background image */}
       <div className="absolute inset-0">
         <img
           src="/images/services/signal-structure.jpg"
@@ -15,15 +14,11 @@ export default function ServicesHero() {
           className="h-full w-full object-cover object-center"
           loading="eager"
         />
-        {/* Base darkening overlay */}
         <div className="absolute inset-0 bg-black/55" />
-        {/* Subtle depth */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70" />
       </div>
 
-      {/* Content */}
       <div className="relative mx-auto max-w-6xl px-6">
-        {/* top-aligned, pushed down intentionally */}
         <div className="flex min-h-[75vh] flex-col pt-20 md:pt-24">
           <div className="max-w-3xl">
             <p className="text-sm tracking-wide text-white/60">

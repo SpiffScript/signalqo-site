@@ -16,7 +16,6 @@ const base =
   "active:translate-y-[1px]";
 
 const variants: Record<Variant, string> = {
-  // PRIMARY — default action
   primary:
     "bg-slate-800/90 text-white border border-white/20 " +
     "shadow-[0_10px_30px_rgba(0,0,0,0.6)] " +
@@ -24,7 +23,6 @@ const variants: Record<Variant, string> = {
     "hover:shadow-[0_14px_38px_rgba(0,0,0,0.7)] " +
     "hover:scale-[1.03]",
 
-  // SECONDARY — explore / scroll
   secondary:
     "bg-transparent text-slate-800/90 border border-white/15 " +
     "shadow-[0_8px_24px_rgba(0,0,0,0.45)] " +
@@ -32,7 +30,6 @@ const variants: Record<Variant, string> = {
     "hover:shadow-[0_12px_30px_rgba(0,0,0,0.6)] " +
     "hover:scale-[1.03]",
 
-  // CONTACT — intentional reach-out (kept intact)
   contact:
     "bg-slate-900/95 text-white border border-blue-400/40 " +
     "shadow-[0_12px_36px_rgba(0,0,0,0.65)] " +
@@ -40,7 +37,6 @@ const variants: Record<Variant, string> = {
     "hover:shadow-[0_18px_44px_rgba(0,0,0,0.75)] " +
     "hover:scale-[1.04]",
 
-  // NAVY — decisive / commitment CTA
   navy:
     "bg-blue-600 text-white border border-blue-500 " +
     "shadow-[0_10px_30px_rgba(0,0,0,0.55)] " +

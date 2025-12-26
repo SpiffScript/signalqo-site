@@ -16,7 +16,6 @@ export default function BackToTop({ showAfter = 0, className = "" }: Props) {
       const scrollY = window.scrollY;
       setVisible(scrollY >= showAfter);
 
-      // approximate position of the button in page coordinates (bottom-right corner)
       const buttonY = scrollY + window.innerHeight - 40;
       const buttonX = window.scrollX + window.innerWidth - 40;
 

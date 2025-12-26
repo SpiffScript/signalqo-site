@@ -1,17 +1,13 @@
-// src/data/signalFlow.ts
-
 export type FlowModeKey = "problems" | "solutions";
 export type LaneKey = "people" | "systems" | "financial";
 
 export interface FlowCard {
   title: string;
 
-  // Per-card view content:
-  overview: string; // 10,000-foot view
-  problem: string;  // why it hurts day-to-day
-  solution: string; // SignalQo solution
+  overview: string;
+  problem: string;
+  solution: string;
 
-  // Keep detail for backwards compatibility while we transition
   detail?: string;
 }
 
@@ -21,10 +17,6 @@ export interface FlowCategory {
   lanes: Record<LaneKey, FlowCard[]>;
 }
 
-/**
- * PROBLEMS
- * 8 parent categories (you can expand as you go)
- */
 export const PROBLEM_CATEGORIES: FlowCategory[] = [
   {
     key: "leadership-bottlenecks",
@@ -458,19 +450,8 @@ export const PROBLEM_CATEGORIES: FlowCategory[] = [
       ],
     },
   },
-
-  // TODO: Add remaining problem categories in this same pattern:
-  // - Broken / outdated processes
-  // - Slow / inconsistent decision making
-  // - Inconsistent service delivery
-  // - Financial blind spots & margin erosion
-  // - Burnout, turnover & operator exhaustion
 ];
 
-/**
- * SOLUTIONS
- * 8 parent categories (a few started below; extend as needed)
- */
 export const SOLUTION_CATEGORIES: FlowCategory[] = [
   {
     key: "leadership-training",
@@ -905,16 +886,8 @@ export const SOLUTION_CATEGORIES: FlowCategory[] = [
   },
 ];
 
-  // TODO: Add remaining solution categories in this same pattern:
-  // - Decision review
-  // - P&L cleanup
-  // - Service audit
-  // - Operating system setup
-  // - Manager coaching & change support
-
-
 export type FlowCategoryKey = FlowCategory["key"];
-// Normalized map used by the UI (key -> category)
+
 export const SIGNAL_FLOW: Record<FlowModeKey, Record<string, FlowCategory>> = {
   problems: Object.fromEntries(PROBLEM_CATEGORIES.map((c) => [c.key, c])),
   solutions: Object.fromEntries(SOLUTION_CATEGORIES.map((c) => [c.key, c])),

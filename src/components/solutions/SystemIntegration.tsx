@@ -3,12 +3,10 @@ import SolutionsPanel from "./SolutionsPanel";
 export default function SystemIntegration() {
   return (
     <section className="bg-slate-50 py-20 sm:py-24 relative overflow-hidden border-t border-slate-200/70">
-      {/* subtle center line to tie sections together */}
       <div className="absolute left-1/2 top-0 w-px h-full bg-slate-200 hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl">
-          {/* label + accent line, consistent with other sections */}
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12 bg-blue-600" />
             <span className="text-blue-600 font-mono text-xs tracking-[0.2em] uppercase font-bold">
@@ -27,9 +25,7 @@ export default function SystemIntegration() {
         </div>
 
         <div className="mt-10 max-w-2xl">
-          {/* Card style matched to BusinessSystemStability.tsx */}
           <div className="group relative bg-white border border-slate-200 p-8 rounded-sm shadow-sm transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-blue-500/50 overflow-hidden">
-            {/* corner accent, same as stability cards 1 & 4 */}
             <div className="absolute top-0 right-0 w-16 h-16 bg-slate-50 transition-colors group-hover:bg-blue-600/10 rotate-45 translate-x-8 -translate-y-8" />
               <SolutionsPanel
                 title={<span className="text-slate-900 group-hover:text-blue-700 transition-colors">We design the work to follow the system, not just the task.</span>}

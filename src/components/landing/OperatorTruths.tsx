@@ -70,7 +70,7 @@ export default function OperatorTruths() {
   return (
     <aside className="h-full rounded-none border border-slate-200 bg-slate-50 shadow-sm">
       <div className="relative h-full rounded-none">
-        {/* Grain overlay */}
+
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 rounded-none opacity-[0.1] mix-blend-multiply"
@@ -104,7 +104,7 @@ export default function OperatorTruths() {
           <div className="mt-6 space-y-5">
             {truths.map((t) => (
               <div key={t.label} className="flex gap-3">
-                {/* Neutral mark for now (no Signal icon) */}
+
                 <div className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center text-slate-900">
                   <SignalMark className="h-4 w-4" />
                 </div>

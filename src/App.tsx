@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
-// Fixed: Pointing to types.ts where we just cleaned up the routes
 import { RoutePath } from "./types";
 
 import Header from './components/Header';
@@ -10,7 +9,7 @@ import BackToTop from './components/ui/BackToTop';
 
 import LandingPage from './components/LandingPage';
 import Services from './components/Services';
-import Leadership from './components/Leadership'; // Renamed for filename consistency
+import Leadership from './components/Leadership';
 import Solutions from './components/Solutions';
 import NextSteps from './components/NextSteps';
 import About from './components/About';
@@ -26,7 +25,6 @@ import Seo from "./components/Seo";
 function App() {
   const { pathname } = useLocation();
 
-  // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -36,7 +34,6 @@ function App() {
       <Seo />
       <Header />
 
-      {/* Main content area - pt-16 accounts for fixed header height */}
       <main className="flex-grow pt-16">
         <Routes>
           <Route path={RoutePath.HOME} element={<LandingPage />} />
@@ -47,12 +44,10 @@ function App() {
           <Route path={RoutePath.ABOUT} element={<About />} />
           <Route path={RoutePath.CONTACT} element={<Contact />} />
 
-          {/* Legal Routes */}
           <Route path={RoutePath.TERMS} element={<Terms />} />
           <Route path={RoutePath.PRIVACY} element={<Privacy />} />
           <Route path={RoutePath.ACCEPTABLE_USE} element={<AcceptableUse />} />
 
-          {/* Fallback - Redirects unknown paths to Home */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

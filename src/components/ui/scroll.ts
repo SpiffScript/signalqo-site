@@ -33,14 +33,11 @@ export function scrollToId(id: string, options: ScrollOptions = {}) {
     options.behavior ?? (prefersReducedMotion() ? "auto" : "smooth");
   const offset = options.offset ?? 0;
 
-  // First, get it into view smoothly (works well across browsers)
   el.scrollIntoView({ behavior, block: "start" });
 
-  // Then apply offset (for sticky headers / visual alignment)
   if (offset !== 0) {
     const parent = getScrollParent(el);
 
-    // Wait a frame so scrollIntoView completes its initial move
     requestAnimationFrame(() => {
       if (parent === window) {
         window.scrollBy({ top: offset, behavior });

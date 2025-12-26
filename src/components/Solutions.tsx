@@ -13,7 +13,6 @@ export default function Solutions() {
       <BusinessSystemStability />
       <HumanLoadReduction />
 
-      {/* System Integration + Entry Point + shared right-side media */}
       <SolutionsSystemsBlock />
 
       <BackToTop />

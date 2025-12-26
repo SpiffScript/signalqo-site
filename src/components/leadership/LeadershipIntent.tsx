@@ -6,7 +6,6 @@ export default function LeadershipIntent() {
   const [hasInteracted, setHasInteracted] = useState(false);
   const [inView, setInView] = useState(false);
 
-  // 1) Do NOT animate unless the user scrolls at least once.
   useEffect(() => {
     const onFirstScroll = () => {
       setHasInteracted(true);
@@ -18,7 +17,6 @@ export default function LeadershipIntent() {
     return () => window.removeEventListener("scroll", onFirstScroll);
   }, []);
 
-  // 2) Only animate when the box is near the viewport (after interaction).
   useEffect(() => {
     if (!boxRef.current) return;
 
@@ -27,7 +25,6 @@ export default function LeadershipIntent() {
         if (entry.isIntersecting) setInView(true);
       },
       {
-        // Triggers a bit before it fully enters — tweak if needed
         root: null,
         threshold: 0.12,
         rootMargin: "0px 0px -10% 0px",
@@ -43,9 +40,7 @@ export default function LeadershipIntent() {
 
   return (
     <section className="bg-black">
-      {/* Tight spacing so we don't create extra "dead space" under the water */}
       <div className="mx-auto max-w-6xl px-6 pb-10">
-        {/* Pull the box up so it can overlap the water area (once it appears) */}
         <div
           ref={boxRef}
           className={[

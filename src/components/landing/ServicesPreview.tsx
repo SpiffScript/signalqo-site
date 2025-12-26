@@ -1,4 +1,3 @@
-// ServicesPreview.tsx Refined
 export default function DirectEngagement() {
   const lanes = [
     {
@@ -35,13 +34,12 @@ export default function DirectEngagement() {
 
   return (
     <section className="relative py-24 bg-slate-100 overflow-hidden">
-      {/* Center spine for light section */}
+
       <div className="pointer-events-none absolute inset-0 flex justify-center" aria-hidden="true">
         <div className="w-px bg-slate-300/50" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-8">
-        {/* Header - Refined and Professional */}
         <div className="max-w-3xl mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-slate-900 uppercase">
             Operational Alignment
@@ -52,14 +50,12 @@ export default function DirectEngagement() {
           </p>
         </div>
 
-        {/* The Main 3-Box Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {lanes.map((lane) => (
             <div
               key={lane.tag}
               className="group relative h-80 overflow-hidden rounded-sm bg-slate-900 text-slate-50 shadow-xl border border-slate-800 transition-all hover:border-blue-500/50"
             >
-              {/* FRONT STATE (Observation) */}
               <div className="flex h-full flex-col p-8 transition-all duration-500 group-hover:blur-sm group-hover:opacity-10">
                 <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-blue-400 mb-4">
                   {lane.tag}
@@ -75,7 +71,6 @@ export default function DirectEngagement() {
                 </p>
               </div>
 
-              {/* SLIDE-UP CARD (The Signal) */}
               <div className="absolute inset-x-0 bottom-0 z-20 h-[90%] translate-y-[101%] bg-blue-950 p-6 transition-transform duration-300 ease-out group-hover:translate-y-0 group-active:translate-y-0 shadow-2xl">
                 <div className="flex h-full flex-col">
                   <div className="space-y-4">
@@ -103,7 +98,6 @@ export default function DirectEngagement() {
           ))}
         </div>
 
-        {/* BOTTOM SECTION: Next Steps */}
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-8 p-10 border border-slate-200 bg-white rounded-sm shadow-sm">
           <div className="max-w-xl text-center md:text-left">
             <p className="text-[10px] font-mono tracking-[0.2em] uppercase text-blue-600 mb-2">
@@ -118,7 +112,6 @@ export default function DirectEngagement() {
             </p>
           </div>
 
-          {/* Wrapper ensured to keep button away from the card edges */}
           <div className="flex-shrink-0">
             <a
               href="/next-steps"

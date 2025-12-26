@@ -89,12 +89,9 @@ function Card({ pillar }: { pillar: Pillar }) {
         </p>
       </div>
 
-      {/* The "Lanes" Grid */}
       <div className="mt-10 grid gap-12 md:grid-cols-2 relative">
-        {/* Vertical Divider for Desktop */}
         <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white/5" />
 
-        {/* Left Lane: The Problem */}
         <div className="space-y-4">
           <p className="text-[12px] font-bold tracking-[0.2em] text-white/30 uppercase">
             The Pressure Point
@@ -114,7 +111,6 @@ function Card({ pillar }: { pillar: Pillar }) {
           </ul>
         </div>
 
-        {/* Right Lane: The Work */}
         <div className="space-y-4">
           <p className="text-[12px] font-bold tracking-[0.2em] text-blue-400/85 uppercase">
             The Strategic Work
@@ -135,7 +131,6 @@ function Card({ pillar }: { pillar: Pillar }) {
         </div>
       </div>
 
-      {/* Outcome Footer */}
       <div className="mt-10 border-t border-white/5 pt-6">
         <div className="flex items-start gap-3">
           <span className="text-[10px] font-bold tracking-widest text-white/30 uppercase mt-1">

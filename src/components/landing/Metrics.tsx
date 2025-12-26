@@ -2,7 +2,6 @@ export default function Metrics() {
   return (
     <section className="relative py-20 bg-slate-950 text-white overflow-hidden">
 
-      {/* Background Grid */}
       <div
         className="absolute inset-0 opacity-5"
         style={{
@@ -10,7 +9,6 @@ export default function Metrics() {
           backgroundSize: '40px 40px'
         }}
       />
-      {/* Center Spine */}
         <div
           className="pointer-events-none absolute inset-0 flex justify-center"
           aria-hidden="true"
@@ -30,7 +28,6 @@ export default function Metrics() {
 
         <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-3">
 
-          {/* Stat 1 */}
           <div className="relative group">
             <div className="text-6xl md:text-7xl font-black font-mono tracking-tighter text-white opacity-90 group-hover:text-blue-400 transition-colors">
               20+
@@ -43,7 +40,6 @@ export default function Metrics() {
             </div>
           </div>
 
-          {/* Stat 2 */}
           <div className="relative group">
             <div className="text-6xl md:text-7xl font-black font-mono tracking-tighter text-white opacity-90 group-hover:text-blue-400 transition-colors">
               $50M+
@@ -56,7 +52,6 @@ export default function Metrics() {
             </div>
           </div>
 
-          {/* Stat 3 */}
           <div className="relative group">
             <div className="text-6xl md:text-7xl font-black font-mono tracking-tighter text-red-500">
               0

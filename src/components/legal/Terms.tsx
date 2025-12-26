@@ -1,4 +1,3 @@
-// Website > src > components > legal > Terms.tsx
 import React from "react";
 
 const Terms: React.FC = () => {

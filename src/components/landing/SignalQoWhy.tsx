@@ -1,16 +1,12 @@
-// Website/src/components/landing/SignalQoWhy.tsx
-
 export default function SignalQoWhy() {
   return (
     <section className="relative isolate overflow-hidden bg-slate-100">
 
-      {/* Center spine - Preserved exactly as requested */}
       <div
         className="pointer-events-none absolute inset-y-0 left-1/2 w-px bg-slate-300/50"
         aria-hidden="true"
       />
 
-      {/* Content */}
       <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-16 text-center">
         <h2 className="text-xs font-semibold tracking-[0.25em] text-sky-600 uppercase">
           Why SignalQo Exists

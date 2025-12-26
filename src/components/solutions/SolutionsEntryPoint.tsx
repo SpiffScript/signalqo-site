@@ -1,19 +1,17 @@
-import { ArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { RoutePath } from "../../types";
 import { CtaButton } from "../ui/CtaButton";
+import { ArrowUpRight } from "lucide-react";
 
 export default function SolutionsEntryPoint() {
   const navigate = useNavigate();
 
   return (
     <section className="bg-slate-50 py-20 sm:py-24 relative overflow-hidden border-t border-slate-200/70">
-      {/* center spine to tie the page together */}
       <div className="absolute left-1/2 top-0 w-px h-full bg-slate-200 hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="max-w-[650px]">
-          {/* label + accent line */}
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12 bg-blue-600" />
             <span className="text-blue-600 font-mono text-xs tracking-[0.2em] uppercase font-bold">
@@ -26,14 +24,13 @@ export default function SolutionsEntryPoint() {
           </h2>
 
           <p className="mt-6 text-lg text-slate-700 leading-relaxed border-l-4 border-slate-300 pl-6">
-            Most engagements begin with a focused review — a real look at what’s
+            Most engagements begin with a focused review – a real look at what’s
             happening, what keeps repeating, and where the pressure actually
             lives. The goal isn’t to diagnose everything. It’s to isolate the
             signal and make the next move obvious.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            {/* Placeholder for future How It Works page */}
             <button
               onClick={() => navigate(RoutePath.CONTACT)}
               className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-sm border border-slate-200 bg-white hover:bg-slate-50 transition-colors text-slate-900"

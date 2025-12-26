@@ -60,12 +60,12 @@ export default function NextStepsFaq() {
           {
             q: "What happens after I reach out?",
             a:
-              "We start with a short intake so we’re not guessing. Then we do a signal scan: where decisions stick, where ownership is unclear, and where execution breaks under load. From there, we recommend a focus path — either a short reset or a longer engagement if the system needs reinforcement.",
+              "We start with a short intake so we’re not guessing. Then we do a signal scan: where decisions stick, where ownership is unclear, and where execution breaks under load. From there, we recommend a focus path – either a short reset or a longer engagement if the system needs reinforcement.",
           },
           {
             q: "What does the first 30 days actually look like?",
             a:
-              "Week one is clarity: isolate constraints and stop the biggest leaks. Weeks two through four are alignment and rhythm: decision lanes, standards, and a cadence that managers can actually run. You’ll feel traction early, but the point is not a burst — it’s a repeatable pattern.",
+              "Week one is clarity: isolate constraints and stop the biggest leaks. Weeks two through four are alignment and rhythm: decision lanes, standards, and a cadence that managers can actually run. You’ll feel traction early, but the point is not a burst – it’s a repeatable pattern.",
           },
           {
             q: "How quickly do we see traction?",
@@ -91,12 +91,12 @@ export default function NextStepsFaq() {
           {
             q: "Do you help implement or just advise?",
             a:
-              "Implementation is part of the work. If we leave you with a plan and walk away, nothing changes. The amount of implementation depends on your internal capacity — some teams want support building the system, others want reinforcement so their managers can run it.",
+              "Implementation is part of the work. If we leave you with a plan and walk away, nothing changes. The amount of implementation depends on your internal capacity – some teams want support building the system, others want reinforcement so their managers can run it.",
           },
           {
             q: "Is this short-term or ongoing?",
             a:
-              "Both models exist. Some situations need a short reset to restore signal and decision clarity. Others need reinforcement to keep standards from drifting. We’ll recommend the lightest engagement that actually works — not the longest one.",
+              "Both models exist. Some situations need a short reset to restore signal and decision clarity. Others need reinforcement to keep standards from drifting. We’ll recommend the lightest engagement that actually works – not the longest one.",
           },
         ],
       },
@@ -107,17 +107,17 @@ export default function NextStepsFaq() {
           {
             q: "What if my managers are the problem?",
             a:
-              "Sometimes they are — but usually the system is setting them up to fail. We look for clarity gaps first: unclear standards, unclear authority, inconsistent enforcement, and competing priorities. If it’s a capability issue, we’ll call it. If it’s a structure issue, we’ll fix that before you start replacing people.",
+              "Sometimes they are – but usually the system is setting them up to fail. We look for clarity gaps first: unclear standards, unclear authority, inconsistent enforcement, and competing priorities. If it’s a capability issue, we’ll call it. If it’s a structure issue, we’ll fix that before you start replacing people.",
           },
           {
             q: "What if I’m the bottleneck?",
             a:
-              "That’s common, not shameful. It usually means the business has outgrown informal decision-making. We reduce unnecessary escalations by clarifying ownership and installing a cadence that catches issues earlier. The goal is not to remove you — it’s to stop you from being the operating system.",
+              "That’s common, not shameful. It usually means the business has outgrown informal decision-making. We reduce unnecessary escalations by clarifying ownership and installing a cadence that catches issues earlier. The goal is not to remove you – it’s to stop you from being the operating system.",
           },
           {
             q: "Do you help with difficult conversations?",
             a:
-              "Yes — because avoiding them is expensive. We’ll help you structure the conversation, set expectations, and define what “good” looks like afterward. The goal is not drama. It’s a clean standard with follow-through.",
+              "Yes – because avoiding them is expensive. We’ll help you structure the conversation, set expectations, and define what “good” looks like afterward. The goal is not drama. It’s a clean standard with follow-through.",
           },
           {
             q: "How do you handle resistance?",
@@ -138,7 +138,7 @@ export default function NextStepsFaq() {
           {
             q: "Do you need access to financials or staff?",
             a:
-              "Only what’s necessary. Sometimes we need high-level financial signals to understand constraints and priorities. Sometimes we need manager input to see where reality differs from intent. We don’t need your entire world — we need enough signal to stop guessing.",
+              "Only what’s necessary. Sometimes we need high-level financial signals to understand constraints and priorities. Sometimes we need manager input to see where reality differs from intent. We don’t need your entire world – we need enough signal to stop guessing.",
           },
           {
             q: "On-site or remote?",
@@ -159,12 +159,12 @@ export default function NextStepsFaq() {
           {
             q: "What don’t you do?",
             a:
-              "We’re not a staffing firm, and we’re not a therapist. We don’t do performance theater or binders nobody reads. We focus on signal, decisions, execution, and leadership discipline — the operational levers that actually move outcomes.",
+              "We’re not a staffing firm, and we’re not a therapist. We don’t do performance theater or binders nobody reads. We focus on signal, decisions, execution, and leadership discipline – the operational levers that actually move outcomes.",
           },
           {
             q: "What happens if we stop mid-engagement?",
             a:
-              "We end cleanly. We document what’s been installed, what still needs reinforcement, and what risks to watch for. If the goal is independence, a clean handoff is part of the work — not an afterthought.",
+              "We end cleanly. We document what’s been installed, what still needs reinforcement, and what risks to watch for. If the goal is independence, a clean handoff is part of the work – not an afterthought.",
           },
         ],
       },
@@ -196,7 +196,7 @@ export default function NextStepsFaq() {
           </h2>
 
           <p className="mt-6 text-xl text-white/60 leading-relaxed border-l-4 border-white/10 pl-6">
-            This section exists to save time — yours and ours. If something is a fit issue, it should show up early.
+            This section exists to save time – yours and ours. If something is a fit issue, it should show up early.
           </p>
         </div>
 

@@ -3,12 +3,10 @@ import SolutionsPanel from "./SolutionsPanel";
 export default function BusinessSystemStability() {
   return (
     <section className="bg-slate-100 py-24 sm:py-32 relative overflow-hidden">
-      {/* 1. Structural "Signal" Line - A vertical anchor that runs through the header down into the grid */}
       <div className="absolute left-1/2 top-0 w-px h-full bg-slate-300/50 hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
 
-        {/* Header - High Contrast and Color-Blocked */}
         <div className="max-w-3xl mb-20">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12 bg-blue-600" />
@@ -24,12 +22,9 @@ export default function BusinessSystemStability() {
           </p>
         </div>
 
-        {/* The "Module" Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
 
-          {/* Card 1: Decision Flow - Using a "Subtle Glass" effect with a blue top-border */}
           <div className="group relative bg-white border border-slate-200 p-8 rounded-sm shadow-sm transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-blue-500/50 overflow-hidden">
-            {/* Interactive Corner Accent */}
             <div className="absolute top-0 right-0 w-16 h-16 bg-slate-50 transition-colors group-hover:bg-blue-600/10 rotate-45 translate-x-8 -translate-y-8" />
 
             <SolutionsPanel
@@ -39,7 +34,6 @@ export default function BusinessSystemStability() {
             />
           </div>
 
-          {/* Card 2: Execution - Using a soft Slate-Blue tint */}
           <div className="group relative bg-slate-50 border border-slate-200 p-8 rounded-sm shadow-sm transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-blue-500/50">
             <SolutionsPanel
               title={<span className="text-slate-900 group-hover:text-blue-700 transition-colors">Execution & process stability</span>}
@@ -48,7 +42,6 @@ export default function BusinessSystemStability() {
             />
           </div>
 
-          {/* Card 3: Alignment - Matching Card 2's tint for checkerboard effect */}
           <div className="group relative bg-slate-50 border border-slate-200 p-8 rounded-sm shadow-sm transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-blue-500/50">
             <SolutionsPanel
               title={<span className="text-slate-900 group-hover:text-blue-700 transition-colors">Organizational alignment</span>}
@@ -57,7 +50,6 @@ export default function BusinessSystemStability() {
             />
           </div>
 
-          {/* Card 4: Visibility - Matching Card 1's white background */}
           <div className="group relative bg-white border border-slate-200 p-8 rounded-sm shadow-sm transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 hover:border-blue-500/50 overflow-hidden">
             <div className="absolute top-0 right-0 w-16 h-16 bg-slate-50 transition-colors group-hover:bg-blue-600/10 rotate-45 translate-x-8 -translate-y-8" />
             <SolutionsPanel
@@ -68,7 +60,6 @@ export default function BusinessSystemStability() {
           </div>
         </div>
 
-        {/* Net Effect — Quiet Resolution */}
         <div className="mt-20 max-w-4xl mx-auto pt-10 border-t border-slate-300/70">
           <p className="text-center text-xl font-medium text-slate-800 leading-relaxed">
             The business stops depending on constant personal intervention and begins operating

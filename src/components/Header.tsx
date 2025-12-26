@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Activity, Menu, X } from "lucide-react";
 
-// Pointing to types for RoutePath; assuming NAV_ITEMS moved there or stayed in constants
 import { RoutePath } from "../types";
 import { NAV_ITEMS } from "../constants";
 import { CtaButton } from "./ui/CtaButton";
@@ -14,15 +13,13 @@ export default function Header() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  // Optimized Scroll Listener
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll(); // Initial check
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
@@ -38,7 +35,6 @@ export default function Header() {
       <div className="h-16 flex items-center">
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
-            {/* Brand - Safe button for SEO/Nav */}
             <button
               type="button"
               onClick={() => navigate(RoutePath.HOME)}
@@ -52,7 +48,6 @@ export default function Header() {
               </span>
             </button>
 
-            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               {NAV_ITEMS.map((item) => (
                 <NavLink
@@ -77,7 +72,6 @@ export default function Header() {
               </CtaButton>
             </nav>
 
-            {/* Mobile Menu Toggle */}
             <div className="md:hidden">
               <button
                 type="button"
@@ -92,7 +86,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-slate-900 border-b border-slate-800">
           <div className="px-4 pt-4 pb-6 space-y-2">

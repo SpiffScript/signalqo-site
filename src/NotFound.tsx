@@ -6,7 +6,6 @@ export default function NotFound() {
 
   return (
     <main className="relative isolate min-h-screen overflow-hidden bg-slate-950 px-6 py-24 sm:py-32 lg:px-8">
-      {/* Visual background noise */}
       <div className="absolute inset-0 -z-10 opacity-20 pointer-events-none">
         <div className="h-full w-full bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:20px_20px]" />
       </div>
@@ -43,7 +42,6 @@ export default function NotFound() {
           </button>
         </div>
 
-        {/* Sarcastic Footer Note */}
         <div className="mt-24 border-t border-white/5 pt-8">
           <p className="text-[10px] font-mono text-slate-600 uppercase tracking-widest">
             Diagnostic: 0% Signal / 100% Static / 1 Doubtful User Action

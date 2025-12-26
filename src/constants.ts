@@ -1,4 +1,3 @@
-// src/constants.ts
 import { Layers, Search, Activity } from "lucide-react";
 import type { NavItem, ServiceOffering, EcosystemBrand } from "./types";
 import { RoutePath } from "./types";
@@ -12,9 +11,6 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'About', path: RoutePath.ABOUT },
   { label: 'Contact', path: RoutePath.CONTACT },
 ];
-
-// REMOVED: export { RoutePath } from "./types";
-// Clean-up: We want to import RoutePath directly from types.ts to keep a single source of truth.
 
 export const OFFERINGS: ServiceOffering[] = [
   {
@@ -66,6 +62,6 @@ export const ECOSYSTEM: EcosystemBrand[] = [
     description: "Decision systems & operational signal.",
     color: "text-blue-500",
     icon: Activity,
-    href: "/", // Pointing to current site
+    href: "/",
   },
 ];

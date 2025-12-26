@@ -21,7 +21,6 @@ export default function SignalDomainsCta({ open, onClose }: Props) {
   const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
 
-  // Turnstile
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileMsg, setTurnstileMsg] = useState("");
 
@@ -32,7 +31,6 @@ export default function SignalDomainsCta({ open, onClose }: Props) {
     setTurnstileMountId((n) => n + 1);
   }, [open]);
 
-  // Submit state
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
   );
@@ -51,8 +49,6 @@ export default function SignalDomainsCta({ open, onClose }: Props) {
     if (!open) return;
     panelRef.current?.focus();
   }, [open]);
-
-  /* ---------- Validation helpers ---------- */
 
   const normalizePhoneDigits = (v: string) => v.replace(/\D/g, "");
 
@@ -129,7 +125,6 @@ export default function SignalDomainsCta({ open, onClose }: Props) {
     }
   };
 
-  // Conditional return moved AFTER all hook declarations
   if (!open) return null;
 
   return (
@@ -147,7 +142,6 @@ export default function SignalDomainsCta({ open, onClose }: Props) {
         tabIndex={-1}
         className="w-full max-w-[560px] rounded-[10px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.35)] outline-none"
       >
-        {/* Header */}
         <div className="border-b border-slate-200 px-8 py-7">
           <div className="text-[10px] font-semibold tracking-[0.24em] text-slate-500">
             DIRECT LINE
@@ -160,7 +154,6 @@ export default function SignalDomainsCta({ open, onClose }: Props) {
           </div>
         </div>
 
-        {/* Body */}
         <form onSubmit={handleSubmit} className="px-8 py-7">
           <div className="grid gap-5">
             <div>
@@ -250,7 +243,6 @@ export default function SignalDomainsCta({ open, onClose }: Props) {
                   </div>
                 ) : null}
 
-                {/* Added wrapper with propagation stop to fix "unclickable" issue */}
                 <div onMouseDown={(e) => e.stopPropagation()}>
                   <Turnstile
                     key={`handraise-turnstile-${turnstileMountId}`}
@@ -286,7 +278,6 @@ export default function SignalDomainsCta({ open, onClose }: Props) {
             ) : null}
           </div>
 
-          {/* Footer */}
           <div className="mt-8 flex items-center justify-between border-t border-slate-200 pt-6">
             <button
               type="button"

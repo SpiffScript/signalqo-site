@@ -1,4 +1,3 @@
-// Website > src > components > legal > AcceptableUse.tsx
 import React from "react";
 
 const AcceptableUse: React.FC = () => {

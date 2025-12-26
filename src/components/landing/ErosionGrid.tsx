@@ -54,7 +54,6 @@ const issues: ErosionIssue[] = [
 export default function ErosionGrid() {
   return (
     <section className="relative bg-slate-950 overflow-hidden">
-      {/* Central Spine Line - Fixed Z-index for layering safety */}
       <div
         className="pointer-events-none absolute inset-0 flex justify-center z-0"
         aria-hidden="true"
@@ -72,14 +71,12 @@ export default function ErosionGrid() {
           </p>
         </div>
 
-        {/* The Grid */}
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {issues.map((issue) => (
             <div
               key={issue.title}
               className="group relative h-64 overflow-hidden rounded-none border border-white/10 bg-slate-900/40 backdrop-blur-sm transition-all duration-300 hover:border-blue-500/40"
             >
-              {/* BASE STATE (Default View) */}
               <div className="flex h-full flex-col p-8 transition-all duration-500 group-hover:blur-sm group-hover:opacity-20">
                 <h3 className="text-base font-semibold leading-snug text-white/90">
                   {issue.title}
@@ -100,7 +97,6 @@ export default function ErosionGrid() {
                 </div>
               </div>
 
-              {/* OVERLAY STATE (The Slide-up Signal) */}
               <div className="absolute inset-x-0 bottom-0 z-20 h-[85%] translate-y-[101%] bg-blue-950 p-6 transition-transform duration-300 ease-out group-hover:translate-y-0 group-active:translate-y-0 shadow-2xl">
                 <div className="flex h-full flex-col justify-between">
                   <div className="space-y-4">

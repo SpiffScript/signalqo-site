@@ -1,4 +1,3 @@
-// src/components/landing/Hero.tsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import heroImg from "/images/landing/signalqo-hero-wheel.jpg";
@@ -10,7 +9,6 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative isolate overflow-hidden bg-slate-950 h-[80vh] min-h-[820px] max-h-[1080px]">
-      {/* Background image */}
       <div
         className="absolute inset-0 -z-20 bg-cover bg-no-repeat"
         style={{
@@ -19,10 +17,8 @@ const Hero: React.FC = () => {
         }}
       />
 
-      {/* Gradient overlay for readability */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/65 to-slate-950/25" />
 
-      {/* Using the standard 7xl rail for consistency */}
       <div className="relative mx-auto flex h-full max-w-7xl px-6 md:px-8">
         <div className="flex flex-col justify-center max-w-3xl text-left">
           <h1 className="text-4xl font-semibold tracking-tight text-white md:text-5xl lg:text-6xl leading-[1.2]">
@@ -37,7 +33,7 @@ const Hero: React.FC = () => {
             <CtaButton
               type="button"
               variant="navy"
-              onClick={() => navigate(RoutePath.CONTACT)} // Consistency fix
+              onClick={() => navigate(RoutePath.CONTACT)}
             >
               Start a Decision Review
             </CtaButton>
@@ -45,7 +41,7 @@ const Hero: React.FC = () => {
             <CtaButton
               type="button"
               variant="primary"
-              onClick={() => navigate(RoutePath.SERVICES)} // Consistency fix
+              onClick={() => navigate(RoutePath.SERVICES)}
             >
               See How SignalQo Works
             </CtaButton>

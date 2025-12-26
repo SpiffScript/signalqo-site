@@ -1,4 +1,3 @@
-// SignalDomainsDetail.tsx
 export type DomainKey =
   | "leadership"
   | "accountability"
